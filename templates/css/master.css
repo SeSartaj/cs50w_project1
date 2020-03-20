@@ -1,0 +1,12 @@
+.search-result {
+  background: #a3a3a3;
+  line-height: .5;
+}
+
+.search-result h2 {
+  font-size: 1.4em;
+}
+
+.search-result p {
+  font-size: 1em;
+}
