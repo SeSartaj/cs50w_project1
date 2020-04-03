@@ -1,12 +1,19 @@
-.search-result {
-  background: #a3a3a3;
-  line-height: .5;
+.search_result {
+  line-height: 1;
 }
-
-.search-result h2 {
-  font-size: 1.4em;
+.search-result .search-link {
+    color: #006621;
 }
 
 .search-result p {
-  font-size: 1em;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.hr-line-dashed {
+    border-top: 1px dashed #E7EAEC;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
 }

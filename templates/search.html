@@ -22,24 +22,30 @@
     <nav class="color-light bg-light">
 
 
-        <form class="container inline-form ml-lg-3 ml-md-3 ml-sm-3" action="index.html" method="post">
+        <form class="container inline-form ml-lg-3 ml-md-3 ml-sm-3" action="{{ url_for('search') }}" method="POST">
           <div class="row justify-content-between py-3 ">
             <div class="input-group col-md-8">
               <a class="navbar-brand brand-logo ml-md-3 " href="/"> <span class="fas fa-book-reader" style="font-size:32px;color:#4EA69D;"></span></a>
-              <input type="text" class="form-control ml-sm-3" placeholder="Search for Books here">
+              <input type="text" name="sq" class="form-control ml-sm-3" placeholder="Search for Books here" value="{{ abcd }}">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-search" style="font-size:24; color:white;"></i></button>
               </div>
             </div>
 
+            {% if is_login == 1 %}
+            <li class="nav-item " style="color:white;" >
+              <a class="nav-link bg-warning  text-light" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% else %}
             <div class="col-md-1 d-none d-md-block text-center">
               <ul class="navbar-nav">
                 <li class="nav-item " style="color:white;" >
-                  <a class="nav-link bg-success  text-light" href="{{ url_for('loginpage')}}">Login</a>
+                  <a class="nav-link bg-success  text-light" href="{{ url_for('loginpage') }}">Login</a>
                 </li>
               </ul>
             </div>
           </div>
+          {% endif %}
 
         </form>
 
@@ -57,18 +63,47 @@
 
       </nav>
 
-      <div class="container ml-lg-3 ml-md-3 ml-sm-3">
-        <div class="row py-3">
-          {% for name in search_result %}
-          <div class=" card col-md-7 ml-sm-5 m-1">
-            <h2>{{ name }}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
 
 
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if search_result == [] %}
+            <h1 class="mt-4 text-center color-warning">No result</h1>
+          {% else %}
+            <table class="table mt-5 table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>ISBN</td>
+                  <th>Title</td>
+                  <th>Author</td>
+                  <th>Year</td>
+                  <th>Rating</td>
+                </tr>
+              </thead>
+              <tbody class="">
+                {% for book in search_result %}
+                <tr>
+                  <td>{{ book.isbn }}</td>
+                  <td><a href="{{ url_for('book', isbn=book.isbn)}}">{{ book.title }}</a></td>
+                  <td>{{ book.author }}</td>
+                  <td>{{ book.year }}</td>
+                  <td>{{ book.rating }}</td>
 
-          {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% endif %}
+
         </div>
+      </div>
+      </div>
+
+
+
+
+
 
 
 

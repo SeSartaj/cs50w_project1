@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ book.title }}
+{% endblock%}
+
+{% block body %}
+
+  <div class="container">
+    <div class="row justify-content-center" style="background-color:#f3f3f3;">
+      <div class="col-md-6 m-3 " >
+        <h1>{{ book.title }}</h1><br>
+        <h3 >Details:</h3>
+        <table class="table table-bordered">
+          <tr>
+            <td>ISBN</td>
+            <td>{{ book.isbn }}</td>
+          </tr>
+          <tr>
+            <td>Author</td>
+            <td>{{ book.author }}</td>
+          </tr>
+          <tr>
+            <td>Year of Publication</td>
+            <td>{{ book.year }}</td>
+          </tr>
+          <tr>
+            <td>Average Rating</td>
+            <td>{{ book.rating }}</td>
+          </tr>
+        </table>
+
+        <h3>Description</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h3>Reviews:</h3>
+        <hr>
+        {% for review in reviews %}
+        <h5>By userx</h5>
+        <p class="p-2 m-0">{{ review }}</p>
+        <p style="text-align:right"class="pt-0 mt-0"><small>rating:5</small></p>
+        <hr>
+        {% endfor %}
+
+        <form class="form" action="{{ url_for('book', isbn=book.isbn) }}" method="post">
+          <h5>Write your Review:</h5>
+          <textarea class="form-control" name="rating_text" rows="5" ></textarea>
+          <label for="sel1">Rating:</label>
+          <select class="form-control"  name="rating5">
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <div class="text-right">
+            <button class="btn btn-primary text-right m-2" type="submit" name="submit">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
