@@ -30,9 +30,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="search">search</a>
-            </li>
 
 
           </ul>
@@ -43,7 +40,7 @@
           {% if is_login == 1 %}
           <ul class="navbar-nav">
             <li class="nav-item float-right">
-              <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
             </li>
           </ul>
           {% else %}

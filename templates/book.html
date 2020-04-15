@@ -25,8 +25,12 @@
             <td>{{ book.year }}</td>
           </tr>
           <tr>
-            <td>Average Rating</td>
-            <td>{{ book.rating }}</td>
+            <td>Average Rating on GoodReads</td>
+            <td>{{ average_rating }}</td>
+          </tr>
+          <tr>
+            <td>Rating Count on GoodReads</td>
+            <td>{{ ratings_count }}</td>
           </tr>
         </table>
 
@@ -36,9 +40,14 @@
         <h3>Reviews:</h3>
         <hr>
         {% for review in reviews %}
-        <h5>By userx</h5>
-        <p class="p-2 m-0">{{ review }}</p>
-        <p style="text-align:right"class="pt-0 mt-0"><small>rating:5</small></p>
+        <h5>By {{ review.username }}</h5>
+        <p class="p-2 m-0">{{ review.review_text }}</p>
+
+        <p style="text-align:right"class="pt-0 mt-0"><small>
+          {% for x in range(review.rating) %}
+            *
+          {% endfor %}
+        </small></p>
         <hr>
         {% endfor %}
 
