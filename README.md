@@ -19,3 +19,6 @@ users can:
 
 ### Search Result Page
 ![Search Result Page](/searchresultpage.png?raw=true)
+
+### Review Section
+![Review Section](/reviewsection.png?raw=true)
