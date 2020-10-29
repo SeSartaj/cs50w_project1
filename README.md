@@ -13,3 +13,9 @@ users can:
 ## screenShots
 ### Login Page
 ![Login Page](/loginpage.png?raw=true)
+
+### Search Page
+![Search Page](/searchpage.png?raw=true)
+
+### Search Result Page
+![Search Result Page](/searchresultpage.png?raw=true)
